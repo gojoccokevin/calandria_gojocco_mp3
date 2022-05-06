@@ -14,6 +14,7 @@ function App() {
   const [loginSubmitted, setLoginSubmitted] = useState(false);
   const [loginValid, setLoginValid] = useState(false);
   const [registerSubmitted, setRegisterSubmitted] = useState(false);
+  const [emailValid, setEmailValid] = useState(false);
   const [registerValid, setRegisterValid] = useState(false);
   const [switchView, setView] = useState(false);  
 
@@ -28,6 +29,13 @@ function App() {
 
   const handlerRegisterEmail = (e) => {
     setValues({...values, remail: e.target.value});
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    if (!pattern.test(values.remail)){
+      setEmailValid(false);
+    }else{
+      setEmailValid(true)
+    }
+    
   };
 
   const handlerRegisterPassword = (e) => {
@@ -35,6 +43,12 @@ function App() {
   };
   const handlerLoginEmail = (e) => {
     setValues({...values, lemail: e.target.value});
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    if (!pattern.test(values.lemail)){
+      setEmailValid(false);
+    }else{
+      setEmailValid(true)
+    }
   };
 
   const handlerLoginPassword = (e) => {
@@ -93,7 +107,7 @@ function App() {
       <div className='login-register-container'>
         {/* *Login Form */}
         <div className='form-container'>
-            <form className='form' onSubmit={handleLogin}>
+            <form className='form' onSubmit={handleLogin} noValidate>
               <div className='form-notif'>
                 {/* *Popup when Successful Login */}
                 {loginSubmitted && loginValid ? (
@@ -104,13 +118,6 @@ function App() {
                 <div className='error-notif'>
                   <div className='notif-text'>Error! Wrong <br/> Username or Password</div>
                 </div>) : null}
-
-                {/* *Popup when Unsuccessful Login */}
-                {/* Add logic lang kapag di tugma si email and password doon sa nag register tapos replace mo yung handler dito*/}
-                {/* {loginSubmitted && loginValid ? (
-                <div className='error-notif'>
-                  <div className='notif-text'>Error! Wrong <br/> Username or Password</div>
-                </div>) :null} */}
               </div>
               <div className='form-inputs'>
                 <div>
@@ -119,11 +126,14 @@ function App() {
                   name='lemail'
                   value={values.lemail}
                   onChange={handlerLoginEmail}
-                  type='text'
+                  type='email'
+                  formnovalidate='formnovalidate'
                   className='login-inputs'></input>
                   <div className='error-container'>
                     {/* *msg when no email on login attempt */}
                     {loginSubmitted && !values.lemail ? <label className='error'>Please Enter Email</label> :null}
+                    {/* *msg when not email format */}
+                    {loginSubmitted && !emailValid  && values.lemail ? <label className='error'>Please Enter Valid Email</label> :null}
                   </div>
                 </div>
                 <div>
@@ -150,10 +160,10 @@ function App() {
 
         {/* *Register Form */}
         <div className='form-container' onSubmit={handleRegister}>
-            <form className='form'>
+            <form className='form' noValidate>
               <div className='form-notif'>
               {/* Notif when succesful register */}
-              {registerSubmitted && registerValid ? (
+              {registerSubmitted && registerValid && emailValid ? (
                 <div className='notif'>
                   <div className='notif-text'>Successfully Registered!</div>
                 </div>) :null}
@@ -193,11 +203,14 @@ function App() {
                   name='remail'
                   value={values.remail}
                   onChange={handlerRegisterEmail}
-                  type='text'
+                  type='email'
+                  formnovalidate='formnovalidate'
                   className='register-inputs'></input>
                   <div className='error-container'>
                     {/* *msg when no email on login attempt */}
                     {registerSubmitted && !values.remail ? <label className='error'>Please Enter Email</label> :null}
+                    {/* *msg when not email format */}
+                    {registerSubmitted && !emailValid  && values.remail ? <label className='error'>Please Enter Valid Email</label> :null}
                   </div>
                 </div>
                 <div>
