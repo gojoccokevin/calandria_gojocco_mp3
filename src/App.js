@@ -238,7 +238,7 @@ function App() {
         {/* switches the classes when you click either login or register */}
         <div className={`overlay-container ${switchView ? 'overlay-container-left' : 'overlay-container-right'}`}>
             <div className={`overlay-left ${switchView ? 'overlay-left-active' : 'overlay-left-inactive'}`}>
-                <h1>Hi There!</h1>
+                <h1>Welcome Back!</h1>
                 <p>Please Enter Your</p>
                 <p>Credientials To Register!</p>
                 <button className='overlay-button' onClick={handleSwitchView}>Login</button>
