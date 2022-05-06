@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/calandria_gojocco_mp3/static/css/main.693cd49b.css",
-    "main.js": "/calandria_gojocco_mp3/static/js/main.610ff4ab.js",
+    "main.js": "/calandria_gojocco_mp3/static/js/main.c287b672.js",
     "static/js/787.59dac3a7.chunk.js": "/calandria_gojocco_mp3/static/js/787.59dac3a7.chunk.js",
     "static/media/Galano-Grotesque.otf": "/calandria_gojocco_mp3/static/media/Galano-Grotesque.fcf5d33de61187b2dbe6.otf",
     "index.html": "/calandria_gojocco_mp3/index.html",
     "main.693cd49b.css.map": "/calandria_gojocco_mp3/static/css/main.693cd49b.css.map",
-    "main.610ff4ab.js.map": "/calandria_gojocco_mp3/static/js/main.610ff4ab.js.map",
+    "main.c287b672.js.map": "/calandria_gojocco_mp3/static/js/main.c287b672.js.map",
     "787.59dac3a7.chunk.js.map": "/calandria_gojocco_mp3/static/js/787.59dac3a7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.693cd49b.css",
-    "static/js/main.610ff4ab.js"
+    "static/js/main.c287b672.js"
   ]
 }
