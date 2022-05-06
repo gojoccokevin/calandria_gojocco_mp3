@@ -114,7 +114,7 @@ function App() {
                 <div className='notif'>
                   <div className='notif-text'>Welcome!<br/> {values.firstName} {values.lastName} </div>
                 </div>) : null}
-                {loginSubmitted && !loginValid ? (
+                {loginSubmitted && !loginValid  && emailValid ? (
                 <div className='error-notif'>
                   <div className='notif-text'>Error! Wrong <br/> Username or Password</div>
                 </div>) : null}
@@ -207,7 +207,7 @@ function App() {
                   formnovalidate='formnovalidate'
                   className='register-inputs'></input>
                   <div className='error-container'>
-                    {/* *msg when no email on login attempt */}
+                    {/* *msg when no email on register attempt */}
                     {registerSubmitted && !values.remail ? <label className='error'>Please Enter Email</label> :null}
                     {/* *msg when not email format */}
                     {registerSubmitted && !emailValid  && values.remail ? <label className='error'>Please Enter Valid Email</label> :null}
