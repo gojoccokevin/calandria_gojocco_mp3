@@ -58,24 +58,37 @@ function App() {
 
   // *Resets the form
   const resetForm = (e) => {
-    if(switchView == false){
+    if(switchView === false){
       setLoginSubmitted(false);
       setLoginValid(false);
       setValues({...values, lemail: "", lpassword: ""})
     }
-    else if(switchView == true){
+    else if(switchView === true){
       setRegisterSubmitted(false)
     }
   }
   // *Resets the form
 
+  const resetLogin = (e) => {
+    setLoginValid(false);
+    setLoginSubmitted(false)
+    setValues({...values, lemail: "", lpassword: ""})
+  }
+
   // *Is called when Login on the form is clicked
   const handleLogin = (e) => {
     e.preventDefault(); //method used to cancel a certain event
-    if(values.lemail == values.remail && values.lpassword == values.rpassword){
+
+    if(values.lemail === values.remail && values.lpassword === values.rpassword){
       setLoginValid(true);
+      setLoginSubmitted(true);
+      setTimeout(() => {resetLogin()},4000)
+    }else if(values.lemail === values.remail && values.lpassword !== values.rpassword){
+      setLoginValid(false);
+      setLoginSubmitted(true);
+      setTimeout(() => {resetLogin()},4000)
     }
-    setLoginSubmitted(true);
+    
   }
   // *Is called when Register on the form is clicked
   const handleRegister = (e) => {
@@ -89,13 +102,13 @@ function App() {
   // *Handles the switching of the Forms
   const handleSwitchView = (e) => {
     console.log("i have been called");
-    if(switchView == false){
+    if(switchView === false){
       setView(true);
       setRegisterSubmitted(false);
       setTimeout(() => {resetForm();},500)
       console.log("viewing Register");
     }
-    else if(switchView == true){
+    else if(switchView === true){
       setView(false);
       setLoginSubmitted(false);
       setTimeout(() => {resetForm();},500)
