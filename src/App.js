@@ -83,10 +83,11 @@ function App() {
       setLoginValid(true);
       setLoginSubmitted(true);
       setTimeout(() => {resetLogin()},4000)
-    }else if(values.lemail === values.remail && values.lpassword !== values.rpassword){
+    }
+    else{
       setLoginValid(false);
       setLoginSubmitted(true);
-      setTimeout(() => {resetLogin()},4000)
+      setTimeout(() => {resetLogin()},3000)
     }
     
   }
